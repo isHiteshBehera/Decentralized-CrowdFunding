@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 
 const App = () => {
   return (
@@ -7,3 +8,5 @@ const App = () => {
     </div>
   );
 }
+
+export default App;
