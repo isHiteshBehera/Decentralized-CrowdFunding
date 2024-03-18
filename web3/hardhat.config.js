@@ -14,7 +14,7 @@ module.exports = {
   networks: {
     zksync_testnet: {
       url: "https://zksync2-testnet.zksync.dev",
-      ethNetwork: "sepoli",
+      ethNetwork: "sepolia",
       chainId: 300,
       zksync: true,
     },
@@ -33,11 +33,11 @@ module.exports = {
   },
   solidity: {
     version: "0.8.17",
-    defaultNetwork: 'sepoli',
+    defaultNetwork: 'sepolia',
     networks : {
       hardhat: {},
       sepoli: {
-        url: 'https://rpc.ankr.com/eth_sepoli',
+        url: 'https://rpc.ankr.com/eth_sepolia',
         accounts: ['0x${process.env.PRIVATE_KEY}']
       },
     },
