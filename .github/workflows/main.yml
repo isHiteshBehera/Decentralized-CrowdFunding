@@ -18,7 +18,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20'
+          node-version: '14'
       - name: Install dependencies
         run: |
           cd client  # Change directory to the "client" folder
@@ -30,6 +30,8 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: client/dist  # Assuming your Vite project's build output is in the "client/dist" folder
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          folder: client/dist  # Assuming your Vite project's build output is in the "client/dist" folder
+          clean: true
+          force: true
