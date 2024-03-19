@@ -20,7 +20,9 @@ jobs:
         with:
           node-version: '14'
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd client  # Change directory to the "client" folder
+          npm install  # Install dependencies in the "client" folder
       - name: Build Vite project
         run: |
           cd client  # Change directory to the "client" folder
