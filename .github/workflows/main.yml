@@ -24,7 +24,7 @@ jobs:
       - name: Build Vite project
         run: npm run build --base=/Decentralized-CrowdFunding/client
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.2.3
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
