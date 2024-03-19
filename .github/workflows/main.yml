@@ -33,7 +33,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages
-          folder: client/dist  # Assuming your Vite project's build output is in the "client/dist" folder
+          branch: main
+          folder: client/dist
           clean: true
           force: true
