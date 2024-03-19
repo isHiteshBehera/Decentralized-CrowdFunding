@@ -1,5 +1,5 @@
-# Simple workflow for deploying Vite project with custom base URL to GitHub Pages
-name: Deploy Vite project to GitHub Pages with GitHub Actions
+# Simple workflow for building and deploying Vite project with custom base URL to GitHub Pages
+name: Build and Deploy Vite project to GitHub Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -18,7 +18,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20'
+          node-version: '20'  # Update to the desired Node.js version
       - name: Install pnpm
         run: npm install -g pnpm  # Install pnpm globally
       - name: Install dependencies
@@ -29,11 +29,18 @@ jobs:
         run: |
           cd client  # Change directory to the "client" folder
           npm run build --base=/Decentralized-CrowdFunding/client  # Build Vite project from the "client" folder
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build  # Ensure that the build job completes before deploying
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
+          branch: gh-pages
           folder: client/dist
           clean: true
           force: true
