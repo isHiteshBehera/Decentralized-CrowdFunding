@@ -21,11 +21,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build project
-        run: cd client && npm run build  # Change directory to "client" and build Vite project
+      - name: Build project for production
+        run: cd client && npm run deploy  # Run the deploy script from package.json inside "client" folder
+        env:
+          NODE_ENV: production  # Set NODE_ENV to production for the build
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@3.7.1
+        uses: JamesIves/github-pages-deploy-action@4.2.3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
