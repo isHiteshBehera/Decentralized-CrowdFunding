@@ -28,7 +28,7 @@ jobs:
       - name: Build Vite project
         run: |
           cd client  # Change directory to the "client" folder
-          npm run build --base=/Decentralized-CrowdFunding/client  # Build Vite project from the "client" folder
+          npm run dev --base=/Decentralized-CrowdFunding/client  # Build Vite project from the "client" folder
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
