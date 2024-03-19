@@ -2,7 +2,7 @@
   "name": "client",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://github.com/isHiteshBehera/Decentralized-CrowdFunding",
+  "homepage": "https://isHiteshBehera.github.io/Decentralized-CrowdFunding",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
