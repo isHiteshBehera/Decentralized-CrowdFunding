@@ -1,5 +1,5 @@
 # Simple workflow for deploying Vite project with custom base URL to GitHub Pages
-name: Deploy Vite project to GitHub Pages
+name: Deploy Vite project to GitHub Pages with GitHub Actions
 
 on:
   # Runs on pushes targeting the default branch
