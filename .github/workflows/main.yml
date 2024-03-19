@@ -1,52 +1,24 @@
-name: Deploy
-
+name: Build and Deploy
 on:
   push:
     branches:
-      - main
+      - main  # Set a branch to trigger deployment
 
 jobs:
-  build:
-    name: Build
+  build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v2.3.1
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
+      - name: Install and Build 🔧
+        run: |
+          cd client
+          npm install
+          npm run build
 
-      - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
-          working-directory: client
-
-      - name: Build project
-        run: npm run build
-        working-directory: client
-
-      - name: Upload production-ready build files
-        uses: actions/upload-artifact@v3
-        with:
-          name: production-files
-          path: client/dist
-
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: production-files
-          path: client/dist
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: client/dist
+          branch: gh-pages
+          folder: client/dist
